@@ -1,0 +1,25 @@
+.container {
+    background: url("../img/veggie-burgers.jpg");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+}
+
+body {
+    background-color: rgb(212, 236, 236);
+}
+
+#burgerlist {
+    font-size: 200%;
+    float: left;
+    padding-right: 50%;
+}
+
+.modlist {
+    float: right;
+    font-size: 100%;
+}
+
+.row {
+    padding-top: 5%;
+}

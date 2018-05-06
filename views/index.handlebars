@@ -1,0 +1,38 @@
+
+    <div class="row">
+        <div class="col" id="burgerlist"> 
+            <h1>Burger Types!</h1>
+            <ul>
+                {{#each burgers}}
+                <li>{{name}}</li>
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="col" id="modlist">
+            <h2>Add a Burger</h2>
+            <form class="create-form" action="/api/burgers" method="POST">
+                {{!-- // This is added to add and delete burgers --}}
+                <input type="hidden" name="_method" value="POST">
+                <div class="form-group">
+                    <label for="ca">Burger type:</label>
+                    <input type="text" id="ca" name="name">
+                </div>
+            </form>
+
+            {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
+            <button type="submit" class="btn btn-primary">Add a burger</button>
+
+            {{!-- Delete a burger --}}
+            <h3>Delete a Burger</h3>
+            <form class="create-form" action="/api/burgers" method="POST">
+                {{!-- // This is added to add and delete burgers --}}
+                <input type="hidden" name="_method" value="DELETE">
+                <div class="form-group">
+                    <label for="ca">Burger type:</label>
+                    <input type="text" id="ca" name="name">
+                </div>
+                <button type="Delete" class="btn btn-danger">Delete a burger</button>
+            </form>
+        </div>
+    </div>
