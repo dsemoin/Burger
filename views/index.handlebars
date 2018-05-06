@@ -1,38 +1,51 @@
-
-    <div class="row">
-        <div class="col" id="burgerlist"> 
-            <h1>Burger Types!</h1>
-            <ul>
-                {{#each burgers}}
-                <li>{{name}}</li>
-                {{/each}}
-            </ul>
-        </div>
-
-        <div class="col" id="modlist">
-            <h2>Add a Burger</h2>
-            <form class="create-form" action="/api/burgers" method="POST">
-                {{!-- // This is added to add and delete burgers --}}
-                <input type="hidden" name="_method" value="POST">
-                <div class="form-group">
-                    <label for="ca">Burger type:</label>
-                    <input type="text" id="ca" name="name">
-                </div>
-            </form>
-
-            {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
-            <button type="submit" class="btn btn-primary">Add a burger</button>
-
-            {{!-- Delete a burger --}}
-            <h3>Delete a Burger</h3>
-            <form class="create-form" action="/api/burgers" method="POST">
-                {{!-- // This is added to add and delete burgers --}}
-                <input type="hidden" name="_method" value="DELETE">
-                <div class="form-group">
-                    <label for="ca">Burger type:</label>
-                    <input type="text" id="ca" name="name">
-                </div>
-                <button type="Delete" class="btn btn-danger">Delete a burger</button>
-            </form>
-        </div>
+<div class="row">
+    <div class="col burgerlist">
+        <h1>Burger Types!</h1>
+        <ul>
+            {{#each burgers}} {{#unless devoured}}
+            <li class="burgers">{{name}}
+                <form action="/api/burgers/{{id}}" method="POST" class="devour">
+                    <button type="submit" class="btn btn-primary btn-sm">Devour!</button>
+                </form>
+            </li>
+            {{/unless}} {{/each}}
+        </ul>
     </div>
+    <div class="col" id="modlist">
+        <h1>Devoured!</h1>
+        <ul>
+            {{#each burgers}} {{#if devoured}}
+            <li class="burgers">{{name}}</li>
+            {{/if}} {{/each}}
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col burgerlist">
+        <h2>Add a Burger</h2>
+        <form class="create-form" id="add_burger" action="/api/burgers" method="POST">
+            {{!-- // This is added to add and delete burgers --}}
+            <input type="hidden" name="_method" value="POST">
+            <div class="form-group">
+                <label for="ca">Burger type:</label>
+                <input type="text" id="ca" name="name">
+            </div>
+        </form>
+
+        {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
+        <button type="submit" class="btn btn-primary" onclick="document.getElementById('add_burger').submit()">Add a burger</button>
+</div>
+<div class="col modlist">
+        {{!-- Delete a burger --}}
+        <h3>Delete a Burger</h3>
+        <form class="create-form" action="/api/burgers" method="POST">
+            {{!-- // This is added to add and delete burgers --}}
+            <input type="hidden" name="_method" value="DELETE">
+            <div class="form-group">
+                <label for="ca">Burger type:</label>
+                <input type="text" id="ca" name="name">
+            </div>
+            <button type="Delete" class="btn btn-danger">Delete a burger</button>
+        </form>
+    </div>
+</div>
