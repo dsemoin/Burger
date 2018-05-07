@@ -10,7 +10,6 @@ body {
 }
 
 .burgerlist {
-
     float: left;
     padding-right: 50%;
 }
@@ -25,9 +24,15 @@ body {
 }
 
 .row {
-    padding-top: 5%;
+    padding-top: 10%;
 }
-.devour{
+
+.devour {
     display: inline;
     margin: 5px;
+}
+
+#logger {
+    text-align: center;
+    border: 5px solid black
 }
